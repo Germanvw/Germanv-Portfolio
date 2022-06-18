@@ -2,7 +2,7 @@ import { Box, Container, Stack, Text } from '@chakra-ui/react';
 import { socials } from '../data/socials';
 import { Logo } from './Logo';
 
-export const Footer = () => {
+export const Footer = ({ bg }: { bg: string }) => {
   return (
     <Container
       as={Stack}
@@ -12,6 +12,7 @@ export const Footer = () => {
       spacing={4}
       justify={{ base: 'center', lg: 'space-between' }}
       alignItems='center'
+      bg={bg}
     >
       <Stack
         direction={'column'}

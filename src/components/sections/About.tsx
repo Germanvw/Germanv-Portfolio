@@ -6,19 +6,19 @@ import {
   List,
   ListIcon,
   ListItem,
-  Spacer,
   Stack,
   Text,
 } from '@chakra-ui/react';
 
 import { AiFillCaretRight } from 'react-icons/ai';
 import { skills } from '../../data/skills';
+import { BtnCV } from '../elements/BtnCV';
 
 export const About = () => {
   return (
-    <Stack width='100%'>
+    <Stack width='100%' mb={20}>
       <Stack direction='row' alignItems='center' mb={10}>
-        <Heading minW={200} as='kbd'>
+        <Heading minW={200} as='kbd' id='About'>
           About Me
         </Heading>
         <Divider />
@@ -54,22 +54,32 @@ export const About = () => {
             </Text>
           </Box>
           <Box>
-            <Stack direction='row' justifyContent='between'>
+            <Stack direction={{ base: 'column', sm: 'row' }}>
               {skills?.map((col, i) => (
-                <>
-                  <Stack key={i}>
-                    <List spacing={3}>
-                      {col?.map((skill) => (
-                        <ListItem key={skill}>
-                          <ListIcon as={AiFillCaretRight} color='primary' />
-                          {skill}
-                        </ListItem>
-                      ))}
-                    </List>
-                  </Stack>
-                  {i === 0 && <Spacer></Spacer>}
-                </>
+                <Stack key={i} w='100%'>
+                  <List spacing={3}>
+                    {col?.map((skill) => (
+                      <ListItem key={skill} width='auto'>
+                        <ListIcon as={AiFillCaretRight} color='primary' />
+                        {skill}
+                      </ListItem>
+                    ))}
+                  </List>
+                </Stack>
               ))}
+            </Stack>
+          </Box>
+          <Box py={6}>
+            <Stack
+              direction={{ base: 'column', md: 'row' }}
+              alignItems='center'
+            >
+              <Heading as='h4' size='sm'>
+                For a full list of technologies that i know check:
+              </Heading>
+              <Box width='100px'>
+                <BtnCV />
+              </Box>
             </Stack>
           </Box>
         </Stack>
@@ -79,7 +89,6 @@ export const About = () => {
           borderWidth='1px'
           maxWidth={{ base: 240, lg: 384 }}
           maxHeight={{ base: 240, lg: 384 }}
-          // minHeight={384}
         />
       </Stack>
     </Stack>

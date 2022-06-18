@@ -13,7 +13,8 @@ export const Hero = () => {
       </Heading>
       <Text maxWidth='24em' py='10' fontSize='1.3rem'>
         I’m a 23yo programmer from Argentina obsessed by the world of web
-        development and learning the latest technologies.
+        development, solving problems and developing rich and interactive
+        applications.
       </Text>
       <Box pb={50}>
         <BtnPrimary

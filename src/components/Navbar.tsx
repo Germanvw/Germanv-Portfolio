@@ -3,10 +3,6 @@ import {
   Container,
   Flex,
   IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
   Spacer,
   Stack,
   useColorMode,
@@ -18,6 +14,7 @@ import { Button } from '@chakra-ui/react';
 import { useState } from 'react';
 import { Logo } from './Logo';
 import Link from 'next/link';
+import { BtnCV } from './elements/BtnCV';
 
 export const Navbar = ({ bg }: { bg: string }) => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -26,7 +23,7 @@ export const Navbar = ({ bg }: { bg: string }) => {
 
   return (
     <Stack bg={colorMode === 'dark' ? 'svgDark' : 'svgLight'}>
-      <Box backgroundColor='primary.500' paddingY={4}>
+      <Box paddingY={4}>
         <Container maxW='container.xl' paddingY={0}>
           <Stack direction='row' alignItems='center'>
             <Logo />
@@ -47,27 +44,7 @@ export const Navbar = ({ bg }: { bg: string }) => {
                   </Box>
                 ))}
                 <Box px='5'>
-                  <Menu>
-                    <MenuButton
-                      as={Button}
-                      fontSize='20'
-                      borderRadius='md'
-                      borderWidth='1px'
-                      bg='primary'
-                      color='white'
-                      transition='all 0.2s'
-                      _hover={{ bg: 'white', color: 'secondary' }}
-                      _focus={{
-                        boxShadow: 'outline',
-                      }}
-                    >
-                      CV
-                    </MenuButton>
-                    <MenuList>
-                      <MenuItem _hover={{ color: 'primary' }}>Español</MenuItem>
-                      <MenuItem _hover={{ color: 'primary' }}>English</MenuItem>
-                    </MenuList>
-                  </Menu>
+                  <BtnCV />
                 </Box>
               </Flex>
               <IconButton
@@ -118,7 +95,7 @@ export const Navbar = ({ bg }: { bg: string }) => {
           zIndex: '10px',
           display: 'block',
         }}
-        viewBox='0 0 auto 1'
+        viewBox={'0 0 auto 1'}
         version='1.1'
         xmlns='http://www.w3.org/2000/svg'
       >

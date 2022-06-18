@@ -4,8 +4,8 @@ export const navigation = [
     url: '#About',
   },
   {
-    name: 'Experience',
-    url: '#Experience',
+    name: 'Journey',
+    url: '#Journey',
   },
   {
     name: 'Projects',
