@@ -15,7 +15,6 @@ export const Template = ({ component }: any) => {
         <Stack
           justifyContent='center'
           alignItems='center'
-          maxWidth='1600px'
           px={{ base: 30, md: 100 }}
         >
           <div style={{ maxWidth: '1000px' }}>{component}</div>
