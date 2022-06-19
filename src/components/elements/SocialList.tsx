@@ -36,7 +36,9 @@ export const SocialList = () => {
                 icon={Component}
                 _hover={{
                   bg: 'secondary',
+                  color: 'white',
                 }}
+                //colorMode
                 onClick={name === 'Discord' ? onCopyDiscord : onCopyEmail}
                 isRound
               />
@@ -50,7 +52,8 @@ export const SocialList = () => {
               fontSize={30}
               borderRadius={100}
               variant='ghost'
-              _hover={{ bg: 'primary' }}
+              _hover={{ bg: 'secondary', color: 'white' }}
+              _active={{ bg: 'primary', color: 'white' }}
               rel='noopener noreferrer'
               target='_blank'
               href={url!}

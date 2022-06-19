@@ -1,5 +1,4 @@
-import { Stack, Text, Heading, Box } from '@chakra-ui/react';
-import { BtnPrimary } from '../elements/BtnPrimary';
+import { Stack, Text, Heading, Box, Button } from '@chakra-ui/react';
 
 export const Hero = () => {
   return (
@@ -17,11 +16,19 @@ export const Hero = () => {
         applications.
       </Text>
       <Box pb={50}>
-        <BtnPrimary
-          title={'My Projects!'}
-          maxWidth='200px'
-          link={'#projects'}
-        />
+        <Button
+          variant='outline'
+          bg='primary'
+          color='white'
+          w='200px'
+          _active={{ bg: 'primary' }}
+          _hover={{ bg: 'secondary' }}
+          mb={50}
+          as='a'
+          href='#Projects'
+        >
+          My Projects
+        </Button>
       </Box>
     </Stack>
   );

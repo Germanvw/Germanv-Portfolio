@@ -3,17 +3,17 @@ import { socials } from '../data/socials';
 import { SocialList } from './elements/SocialList';
 import { Logo } from './Logo';
 
-export const Footer = ({ bg }: { bg: string }) => {
+export const Footer = ({ colorMode }: { colorMode: string }) => {
   return (
     <Container
       as={Stack}
       maxW='9xl'
-      py={4}
+      py={5}
       direction={{ base: 'column', lg: 'row' }}
       spacing={4}
       justify={{ base: 'center', lg: 'space-between' }}
       alignItems='center'
-      bg={bg}
+      bg={colorMode === 'dark' ? 'svgDark' : 'svgLight'}
     >
       <Stack
         direction={'column'}
@@ -22,7 +22,7 @@ export const Footer = ({ bg }: { bg: string }) => {
         display={['none', 'none', 'flex', 'flex', 'flex']}
         zIndex='10'
         position='fixed'
-        bottom='5%'
+        bottom='10%'
         left='30px'
       >
         <SocialList />

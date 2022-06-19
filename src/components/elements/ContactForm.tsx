@@ -58,15 +58,15 @@ export const ContactForm = () => {
           !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
           value.trim() < 5
         )
-          newErrors.email = 'Email is required';
+          newErrors.email = 'Invalid Email';
       }
 
       if (key === 'title')
         if (value.trim().length <= 2)
-          newErrors.title = 'Title must be at least 3 characters';
+          newErrors.title = 'Must be at least 3 characters';
       if (key === 'message')
         if (value.trim().length <= 3)
-          newErrors.message = 'Message must be at least 3 characters';
+          newErrors.message = 'Must be at least 4 characters';
     });
     setErrors({ ...errors, ...newErrors });
   };
@@ -80,6 +80,7 @@ export const ContactForm = () => {
     handleValidation(form);
     if (Object.values(errors).every((v) => v === '')) {
       console.log('submit');
+      setForm(initForm);
     } else {
       console.log('error');
     }
@@ -99,7 +100,10 @@ export const ContactForm = () => {
         >
           <VStack spacing={5}>
             <FormControl isRequired>
-              <FormLabel>Email</FormLabel>
+              <Stack direction='row'>
+                <FormLabel>Email</FormLabel>
+                <Text color='red.400'>{errors?.email}</Text>
+              </Stack>
 
               <InputGroup>
                 <InputLeftElement>
@@ -107,6 +111,7 @@ export const ContactForm = () => {
                 </InputLeftElement>
                 <Input
                   isInvalid={errors?.email !== ''}
+                  bg={colorMode === 'dark' ? 'svgDark' : 'white'}
                   type='email'
                   errorBorderColor='red.400'
                   placeholder='Your Email'
@@ -117,7 +122,10 @@ export const ContactForm = () => {
               </InputGroup>
             </FormControl>
             <FormControl isRequired>
-              <FormLabel>Title</FormLabel>
+              <Stack direction='row'>
+                <FormLabel>Title</FormLabel>
+                <Text color='red.400'>{errors?.title}</Text>
+              </Stack>
 
               <InputGroup>
                 <InputLeftElement>
@@ -126,6 +134,7 @@ export const ContactForm = () => {
                 <Input
                   isInvalid={errors?.title !== ''}
                   type='text'
+                  bg={colorMode === 'dark' ? 'svgDark' : 'white'}
                   errorBorderColor='red.400'
                   placeholder='Title'
                   name='title'
@@ -136,12 +145,16 @@ export const ContactForm = () => {
             </FormControl>
 
             <FormControl isRequired>
-              <FormLabel>Message</FormLabel>
+              <Stack direction='row'>
+                <FormLabel>Message</FormLabel>
+                <Text color='red.400'>{errors?.message}</Text>
+              </Stack>
               <Textarea
                 isInvalid={errors?.message !== ''}
                 errorBorderColor='red.400'
                 placeholder='Your Message'
                 name='message'
+                bg={colorMode === 'dark' ? 'svgDark' : 'white'}
                 value={form.message}
                 onChange={(e) => handleInputs(e)}
                 resize='none'
@@ -155,6 +168,7 @@ export const ContactForm = () => {
               color='white'
               w='100%'
               _hover={{ bg: 'secondary' }}
+              _active={{ bg: 'primary' }}
               mb={50}
               onClick={handleSubmit}
             >
@@ -167,7 +181,7 @@ export const ContactForm = () => {
           justifyContent='center'
           px={{ base: 0, md: 10 }}
         >
-          <Text color='gray.500' w={320}>
+          <Text color={colorMode === 'dark' ? 'gray.400' : 'gray.600'} w={320}>
             Get in Touch! Complete the contact form or check Socials.
           </Text>
           <Flex direction='column' alignItems='center' pt={6}>
@@ -201,6 +215,7 @@ export const ContactForm = () => {
                       : onCopyLocation
                   }
                   _hover={{ border: '2px solid #C62E46' }}
+                  _active={{ color: 'primary' }}
                 >
                   <Box fontSize={26} pr={2}>
                     {Component}
@@ -208,17 +223,6 @@ export const ContactForm = () => {
                   <Text>{value}</Text>
                 </Button>
               </Tooltip>
-              // <Button
-              //   size='md'
-              //   height='48px'
-              //   variant='ghost'
-              //   color='#DCE2FF'
-              //   _hover={{ border: '2px solid #C62E46' }}
-              //   key={name}
-              //   leftIcon={Component}
-              // >
-              //   {value}
-              // </Button>
             ))}
           </Flex>
           <Flex mt={{ lg: 10, md: 10 }} alignItems='center' justify='center'>
@@ -235,14 +239,14 @@ export const ContactForm = () => {
                       isRound={true}
                       fontSize={30}
                       mx={5}
-                      as={'a'}
-                      _hover={{ bg: 'primary' }}
+                      _hover={{ bg: 'secondary', color: 'white' }}
+                      _active={{ bg: 'primary', color: 'white' }}
                       key={name}
-                      icon={
-                        <a key={url} rel='noopener noreferrer' target='_blank'>
-                          {Component}
-                        </a>
-                      }
+                      as={'a'}
+                      rel='noopener noreferrer'
+                      target='_blank'
+                      href={url!}
+                      icon={Component}
                     />
                   </Link>
                 )}

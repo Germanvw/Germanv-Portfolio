@@ -1,6 +1,14 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import {
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  useColorMode,
+} from '@chakra-ui/react';
 
 export const BtnCV = () => {
+  const { colorMode } = useColorMode();
   return (
     <Menu>
       <MenuButton
@@ -18,7 +26,7 @@ export const BtnCV = () => {
       >
         CV
       </MenuButton>
-      <MenuList>
+      <MenuList bg={colorMode === 'dark' ? 'svgDark' : 'white'}>
         <MenuItem _hover={{ color: 'primary' }}>Español</MenuItem>
         <MenuItem _hover={{ color: 'primary' }}>English</MenuItem>
       </MenuList>

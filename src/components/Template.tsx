@@ -20,7 +20,7 @@ export const Template = ({ component }: any) => {
           <div style={{ maxWidth: '1000px' }}>{component}</div>
         </Stack>
       </Box>
-      <Footer bg={bgColor[colorMode]} />
+      <Footer colorMode={colorMode} />
     </>
   );
 };

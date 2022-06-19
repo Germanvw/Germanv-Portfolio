@@ -7,6 +7,7 @@ import {
   Image,
   Stack,
   Text,
+  useColorMode,
 } from '@chakra-ui/react';
 
 interface Props {
@@ -20,9 +21,8 @@ interface Props {
 }
 
 export const ProjectItem = ({ project }: { project: Props }) => {
-  const { featured, name, description, img, technologies, demo, github } =
-    project;
-  console.log(img);
+  const { colorMode } = useColorMode();
+  const { name, description, img, technologies, demo, github } = project;
   return (
     <Center py={6}>
       <Stack
@@ -58,7 +58,7 @@ export const ProjectItem = ({ project }: { project: Props }) => {
           {description?.map((i) => (
             <Text
               fontWeight={600}
-              color={'gray.500'}
+              color={colorMode === 'dark' ? 'gray.400' : 'gray.600'}
               textAlign='center'
               size='sm'
               mb={4}
@@ -105,9 +105,7 @@ export const ProjectItem = ({ project }: { project: Props }) => {
               _hover={{
                 bg: 'secondary',
               }}
-              _focus={{
-                bg: 'secondary',
-              }}
+              _active={{ bg: 'primary' }}
             >
               <a href={github} rel='noopener noreferrer' target='_blank'>
                 Repository
