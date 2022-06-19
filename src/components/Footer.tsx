@@ -27,7 +27,6 @@ export const Footer = ({ colorMode }: { colorMode: string }) => {
       >
         <SocialList />
       </Stack>
-
       <Logo />
       <Text>
         © {new Date().getFullYear()} German Vazquez. All rights reserved.

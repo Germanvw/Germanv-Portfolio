@@ -12,6 +12,7 @@ import { projects } from '../../data/projects';
 import { ProjectItem } from '../elements/ProjectItem';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { FadeInWhenVisible } from '../elements/animation/FadeInWhenVisible';
 
 const variant = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
@@ -43,46 +44,32 @@ export const Projects = () => {
       </Text>
       {displayMore
         ? projects?.map((project) => (
-            <motion.div
-              key={project?.name}
-              ref={ref}
-              initial='hidden'
-              animate={control}
-              className='box'
-              variants={variant}
-            >
+            <FadeInWhenVisible key={project?.name}>
               <ProjectItem project={project} />
-            </motion.div>
+            </FadeInWhenVisible>
           ))
         : projects?.slice(0, 3).map((project) => (
-            <motion.div
-              key={project?.name}
-              ref={ref}
-              initial='hidden'
-              animate={control}
-              className='box'
-              variants={variant}
-            >
+            <FadeInWhenVisible key={project?.name}>
               <ProjectItem project={project} />
-            </motion.div>
+            </FadeInWhenVisible>
           ))}
 
       {projects?.length > 3 && (
         <Flex justifyContent='center' alignItems='center'>
-          <motion.button whileHover={{ scale: 1.1 }}>
-            <Button
-              variant='outline'
-              bg='primary'
-              color='white'
-              w='200px'
-              _active={{ bg: 'primary' }}
-              _hover={{ bg: 'secondary' }}
-              mb={50}
-              onClick={() => setDisplayMore(!displayMore)}
-            >
-              {displayMore ? 'Show Less' : 'Show More'}
-            </Button>
-          </motion.button>
+          <Button
+            as={motion.button}
+            variant='outline'
+            whileHover={{ scale: 1.1 }}
+            bg='primary'
+            color='white'
+            w='200px'
+            _active={{ bg: 'primary' }}
+            _hover={{ bg: 'secondary' }}
+            mb={50}
+            onClick={() => setDisplayMore(!displayMore)}
+          >
+            {displayMore ? 'Hide' : 'Show More'}
+          </Button>
         </Flex>
       )}
     </Stack>

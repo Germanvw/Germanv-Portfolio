@@ -10,8 +10,8 @@ const Home: NextPage = () => {
     <>
       <Hero />
       <About />
-      <Journey />
       <Projects />
+      <Journey />
       <Contact />
     </>
   );

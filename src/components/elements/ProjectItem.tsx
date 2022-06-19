@@ -9,6 +9,7 @@ import {
   Text,
   useColorMode,
 } from '@chakra-ui/react';
+import { ContentSkill } from './ContentSkill';
 
 interface Props {
   featured?: boolean;
@@ -70,21 +71,7 @@ export const ProjectItem = ({ project }: { project: Props }) => {
               {i}
             </Text>
           ))}
-          <Flex flexWrap='wrap' align='center' justify='center'>
-            {technologies.map((tech) => (
-              <Badge
-                px={2}
-                py={1}
-                mx={2}
-                my={2}
-                borderRadius={10}
-                fontWeight={'400'}
-                key={tech}
-              >
-                {tech}
-              </Badge>
-            ))}
-          </Flex>
+          <ContentSkill skills={technologies} />
           <Stack
             width={'100%'}
             mt={'2rem'}

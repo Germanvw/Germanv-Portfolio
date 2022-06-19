@@ -1,5 +1,6 @@
 import { Box, IconButton, Tooltip, useClipboard } from '@chakra-ui/react';
 import { socials } from '../../data/socials';
+import { motion } from 'framer-motion';
 
 export const SocialList = () => {
   const { hasCopied: hasCopiedEmail, onCopy: onCopyEmail } = useClipboard(
@@ -10,7 +11,11 @@ export const SocialList = () => {
 
   if (!socials) return null;
   return (
-    <>
+    <motion.div
+      initial={{ y: '-100vw' }}
+      animate={{ y: 0 }}
+      transition={{ type: 'spring', duration: 2, stiffness: 80, delay: 1 }}
+    >
       {socials?.map(({ Component, name, url, copy }) => (
         <Box key={name}>
           {copy ? (
@@ -38,7 +43,6 @@ export const SocialList = () => {
                   bg: 'secondary',
                   color: 'white',
                 }}
-                //colorMode
                 onClick={name === 'Discord' ? onCopyDiscord : onCopyEmail}
                 isRound
               />
@@ -63,6 +67,6 @@ export const SocialList = () => {
           )}
         </Box>
       ))}
-    </>
+    </motion.div>
   );
 };

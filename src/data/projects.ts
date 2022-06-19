@@ -28,6 +28,7 @@ export const projects = [
     img: '/images/ecommerce1.jpg',
     technologies: [
       'CSS',
+      'Formik',
       'Typescript',
       'React',
       'ReduxToolkit',

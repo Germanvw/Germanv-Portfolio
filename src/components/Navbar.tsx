@@ -13,6 +13,7 @@ import { navigation } from '../data/links';
 import { useState } from 'react';
 import { Logo } from './Logo';
 import { BtnCV } from './elements/BtnCV';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export const Navbar = ({ bg }: { bg: string }) => {
@@ -24,50 +25,56 @@ export const Navbar = ({ bg }: { bg: string }) => {
     <Stack bg={colorMode === 'dark' ? 'svgDark' : 'svgLight'}>
       <Box paddingY={4}>
         <Container maxW='container.xl' paddingY={0}>
-          <Stack direction='row' alignItems='center'>
-            <Logo />
-            <Spacer></Spacer>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             <Stack direction='row' alignItems='center'>
-              <Flex
-                display={['none', 'none', 'flex', 'flex', 'flex']}
-                alignItems='center'
-              >
-                {navigation?.map(({ name, url }) => (
-                  <Box
-                    key={name}
-                    px='5'
-                    fontSize='20'
-                    _hover={{ color: 'primary' }}
-                  >
-                    <Link href={url}>{name}</Link>
+              <Logo />
+              <Spacer></Spacer>
+              <Stack direction='row' alignItems='center'>
+                <Flex
+                  display={['none', 'none', 'flex', 'flex', 'flex']}
+                  alignItems='center'
+                >
+                  {navigation?.map(({ name, url }) => (
+                    <Box
+                      key={name}
+                      px='5'
+                      fontSize='20'
+                      _hover={{ color: 'primary' }}
+                    >
+                      <Link href={url}>{name}</Link>
+                    </Box>
+                  ))}
+                  <Box px='5'>
+                    <BtnCV />
                   </Box>
-                ))}
-                <Box px='5'>
-                  <BtnCV />
-                </Box>
-              </Flex>
-              <IconButton
-                aria-label='hamburger'
-                size='lg'
-                icon={<GiHamburgerMenu />}
-                display={['flex', 'flex', 'none', 'none', 'none']}
-                onClick={() => setIsOpen((s) => !s)}
-              />
-              <IconButton
-                icon={
-                  colorMode === 'light' ? (
-                    <BsSunFill style={{ height: '30px', width: '30px' }} />
-                  ) : (
-                    <BsMoonFill style={{ height: '20px', width: '20px' }} />
-                  )
-                }
-                aria-label='colorMode'
-                variant='ghost'
-                _hover={{ color: 'secondary' }}
-                onClick={toggleColorMode}
-              />
+                </Flex>
+                <IconButton
+                  aria-label='hamburger'
+                  size='lg'
+                  icon={<GiHamburgerMenu />}
+                  display={['flex', 'flex', 'none', 'none', 'none']}
+                  onClick={() => setIsOpen((s) => !s)}
+                />
+                <IconButton
+                  icon={
+                    colorMode === 'light' ? (
+                      <BsSunFill style={{ height: '30px', width: '30px' }} />
+                    ) : (
+                      <BsMoonFill style={{ height: '20px', width: '20px' }} />
+                    )
+                  }
+                  aria-label='colorMode'
+                  variant='ghost'
+                  _hover={{ color: 'secondary' }}
+                  onClick={toggleColorMode}
+                />
+              </Stack>
             </Stack>
-          </Stack>
+          </motion.div>
         </Container>
       </Box>
       <Box display={['flex', 'flex', 'none', 'none', 'none']}>
