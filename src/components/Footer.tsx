@@ -1,5 +1,6 @@
 import { Box, Container, Stack, Text } from '@chakra-ui/react';
 import { socials } from '../data/socials';
+import { SocialList } from './elements/SocialList';
 import { Logo } from './Logo';
 
 export const Footer = ({ bg }: { bg: string }) => {
@@ -21,20 +22,10 @@ export const Footer = ({ bg }: { bg: string }) => {
         display={['none', 'none', 'flex', 'flex', 'flex']}
         zIndex='10'
         position='fixed'
-        bottom='25%'
+        bottom='5%'
         left='30px'
       >
-        <ul>
-          {socials?.map(({ Component, name, url }) => (
-            <Box _hover={{ color: 'primary' }} key={name}>
-              <li style={{ listStyle: 'none', margin: '15px 0px' }}>
-                <a href={url} rel='noopener noreferrer' target='_blank'>
-                  {Component}
-                </a>
-              </li>
-            </Box>
-          ))}
-        </ul>
+        <SocialList />
       </Stack>
 
       <Logo />
@@ -45,7 +36,7 @@ export const Footer = ({ bg }: { bg: string }) => {
         <Box display={['flex', 'flex', 'none', 'none', 'none']}>
           {socials?.map(({ Component, name, url }) => (
             <Box _hover={{ color: 'primary' }} key={name}>
-              <a href={url} rel='noopener noreferrer' target='_blank'>
+              <a href={url!} rel='noopener noreferrer' target='_blank'>
                 {Component}
               </a>
             </Box>

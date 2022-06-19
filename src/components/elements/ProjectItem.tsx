@@ -1,12 +1,10 @@
 import {
   Badge,
-  Box,
   Button,
   Center,
   Flex,
   Heading,
   Image,
-  Link,
   Stack,
   Text,
 } from '@chakra-ui/react';
@@ -14,7 +12,7 @@ import {
 interface Props {
   featured?: boolean;
   name: string;
-  description: string;
+  description: string[];
   img: string;
   technologies: string[];
   demo: string;
@@ -57,13 +55,14 @@ export const ProjectItem = ({ project }: { project: Props }) => {
           <Heading fontSize={'2xl'} fontFamily={'body'}>
             {name}
           </Heading>
-          {description.map((i) => (
+          {description?.map((i) => (
             <Text
               fontWeight={600}
               color={'gray.500'}
               textAlign='center'
               size='sm'
               mb={4}
+              key={i}
             >
               {i}
             </Text>
