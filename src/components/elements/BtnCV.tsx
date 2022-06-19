@@ -19,7 +19,8 @@ export const BtnCV = () => {
         bg='primary'
         color='white'
         transition='all 0.2s'
-        _hover={{ bg: 'white', color: 'secondary' }}
+        _hover={{ bg: 'secondary', color: 'white' }}
+        _active={{ bg: 'primary', color: 'white' }}
         _focus={{
           boxShadow: 'outline',
         }}
@@ -27,8 +28,24 @@ export const BtnCV = () => {
         CV
       </MenuButton>
       <MenuList bg={colorMode === 'dark' ? 'svgDark' : 'white'}>
-        <MenuItem _hover={{ color: 'primary' }}>Español</MenuItem>
-        <MenuItem _hover={{ color: 'primary' }}>English</MenuItem>
+        <MenuItem
+          _hover={{ color: 'primary' }}
+          as='a'
+          href='/pdf/German_Vazquez_esp.pdf'
+          rel='noopener noreferrer'
+          target='_blank'
+        >
+          Español
+        </MenuItem>
+        <MenuItem
+          _hover={{ color: 'primary' }}
+          as='a'
+          href='/pdf/German_Vazquez_eng.pdf'
+          rel='noopener noreferrer'
+          target='_blank'
+        >
+          English
+        </MenuItem>
       </MenuList>
     </Menu>
   );

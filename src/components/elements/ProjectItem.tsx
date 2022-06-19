@@ -32,10 +32,12 @@ export const ProjectItem = ({ project }: { project: Props }) => {
         boxShadow={'2xl'}
         padding={4}
       >
-        <Flex flex={1} bg='blue.200'>
+        <Flex flex={1}>
           <Image
             objectFit='cover'
             boxSize='100%'
+            borderWidth='1px'
+            borderRadius={8}
             minH={380}
             minW={380}
             maxW={475}
@@ -58,7 +60,8 @@ export const ProjectItem = ({ project }: { project: Props }) => {
           {description?.map((i) => (
             <Text
               fontWeight={600}
-              color={colorMode === 'dark' ? 'gray.400' : 'gray.600'}
+              color={colorMode === 'dark' ? 'gray.500' : 'gray.600'}
+              as='i'
               textAlign='center'
               size='sm'
               mb={4}

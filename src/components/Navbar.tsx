@@ -12,8 +12,8 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { navigation } from '../data/links';
 import { useState } from 'react';
 import { Logo } from './Logo';
-import Link from 'next/link';
 import { BtnCV } from './elements/BtnCV';
+import Link from 'next/link';
 
 export const Navbar = ({ bg }: { bg: string }) => {
   const { colorMode, toggleColorMode } = useColorMode();

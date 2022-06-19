@@ -44,7 +44,7 @@ export const projects = [
       'This project was created to test my skills with Chakra-UI and Animations.',
     ],
     img: '/images/ecommerce1.jpg',
-    technologies: ['Chakra-Ui', 'Typescript', 'NextJs'],
+    technologies: ['Chakra-Ui', 'Typescript', 'NextJs', 'Framer Motion'],
     demo: 'https://ecommercemern-gw.herokuapp.com/',
     github: 'https://github.com/Germanvw/portfolio',
   },
@@ -52,7 +52,7 @@ export const projects = [
     featured: true,
     name: 'Calendar Application',
     description: [
-      'A Calendar application where you customer can create events.',
+      'A Calendar application where the user can create events by date with a title and description.',
       'This is the final project from the course "React de 0 a Experto" by Fernando Herrera.',
     ],
     img: '/images/ecommerce1.jpg',
