@@ -87,174 +87,172 @@ export const ContactForm = () => {
   };
 
   return (
-    <Container maxW='full' overflow='hidden'>
-      <Stack direction={{ base: 'column', lg: 'row' }}>
-        <Box
-          bg={colorMode === 'dark' ? 'svgDark' : 'svgLight'}
-          borderRadius='lg'
-          p={8}
-          px={{ base: 10, lg: 20 }}
-          mx={{ base: 0, mg: 5, lg: 10 }}
-          w='100%'
-          shadow='base'
-        >
-          <VStack spacing={5}>
-            <FormControl isRequired>
-              <Stack direction='row'>
-                <FormLabel>Email</FormLabel>
-                <Text color='red.400'>{errors?.email}</Text>
-              </Stack>
-
-              <InputGroup>
-                <InputLeftElement>
-                  <MdOutlineEmail />
-                </InputLeftElement>
-                <Input
-                  isInvalid={errors?.email !== ''}
-                  bg={colorMode === 'dark' ? 'svgDark' : 'white'}
-                  type='email'
-                  errorBorderColor='red.400'
-                  placeholder='Your Email'
-                  name='email'
-                  value={form.email}
-                  onChange={(e) => handleInputs(e)}
-                />
-              </InputGroup>
-            </FormControl>
-            <FormControl isRequired>
-              <Stack direction='row'>
-                <FormLabel>Title</FormLabel>
-                <Text color='red.400'>{errors?.title}</Text>
-              </Stack>
-
-              <InputGroup>
-                <InputLeftElement>
-                  <MdTitle />
-                </InputLeftElement>
-                <Input
-                  isInvalid={errors?.title !== ''}
-                  type='text'
-                  bg={colorMode === 'dark' ? 'svgDark' : 'white'}
-                  errorBorderColor='red.400'
-                  placeholder='Title'
-                  name='title'
-                  value={form.title}
-                  onChange={(e) => handleInputs(e)}
-                />
-              </InputGroup>
-            </FormControl>
-
-            <FormControl isRequired>
-              <Stack direction='row'>
-                <FormLabel>Message</FormLabel>
-                <Text color='red.400'>{errors?.message}</Text>
-              </Stack>
-              <Textarea
-                isInvalid={errors?.message !== ''}
-                errorBorderColor='red.400'
-                placeholder='Your Message'
-                name='message'
+    <Stack direction={{ base: 'column', lg: 'row' }}>
+      <Box
+        bg={colorMode === 'dark' ? 'svgDark' : 'svgLight'}
+        borderRadius='lg'
+        p={8}
+        px={{ base: 10, lg: 20 }}
+        mx={{ base: 0, mg: 5, lg: 10 }}
+        shadow='base'
+      >
+        <VStack spacing={5} width='auto'>
+          <FormControl isRequired>
+            <Stack direction='row'>
+              <FormLabel>Email</FormLabel>
+              <Text color='red.400'>{errors?.email}</Text>
+            </Stack>
+            <InputGroup>
+              <InputLeftElement>
+                <MdOutlineEmail />
+              </InputLeftElement>
+              <Input
                 bg={colorMode === 'dark' ? 'svgDark' : 'white'}
-                value={form.message}
+                type='email'
+                width='100%'
+                errorBorderColor='red.400'
+                placeholder='Your Email'
+                name='email'
+                isInvalid={errors?.email !== ''}
+                value={form.email}
                 onChange={(e) => handleInputs(e)}
-                resize='none'
-                rows={6}
               />
-            </FormControl>
-
-            <Button
-              variant='outline'
-              bg='primary'
-              color='white'
-              w='100%'
-              _hover={{ bg: 'secondary' }}
-              _active={{ bg: 'primary' }}
-              mb={50}
-              onClick={handleSubmit}
-            >
-              Send Message
-            </Button>
-          </VStack>
-        </Box>
-        <Stack
-          alignContent='center'
-          justifyContent='center'
-          px={{ base: 0, md: 10 }}
+            </InputGroup>
+          </FormControl>
+          <FormControl isRequired>
+            <Stack direction='row'>
+              <FormLabel>Title</FormLabel>
+              <Text color='red.400'>{errors?.title}</Text>
+            </Stack>
+            <InputGroup>
+              <InputLeftElement>
+                <MdTitle />
+              </InputLeftElement>
+              <Input
+                bg={colorMode === 'dark' ? 'svgDark' : 'white'}
+                type='text'
+                width='100%'
+                errorBorderColor='red.400'
+                placeholder='Title'
+                name='title'
+                isInvalid={errors?.title !== ''}
+                value={form.title}
+                onChange={(e) => handleInputs(e)}
+              />
+            </InputGroup>
+          </FormControl>
+          <FormControl isRequired>
+            <Stack direction='row'>
+              <FormLabel>Message</FormLabel>
+              <Text color='red.400'>{errors?.message}</Text>
+            </Stack>
+            <Textarea
+              isInvalid={errors?.message !== ''}
+              errorBorderColor='red.400'
+              placeholder='Your Message'
+              width='100%'
+              name='message'
+              bg={colorMode === 'dark' ? 'svgDark' : 'white'}
+              value={form.message}
+              onChange={(e) => handleInputs(e)}
+              resize='none'
+              rows={6}
+            />
+          </FormControl>
+          <Button
+            variant='outline'
+            bg='primary'
+            color='white'
+            _hover={{ bg: 'secondary' }}
+            _active={{ bg: 'primary' }}
+            onClick={handleSubmit}
+          >
+            Send Message
+          </Button>
+        </VStack>
+      </Box>
+      <Stack
+        alignContent='center'
+        justifyContent='center'
+        px={{ base: 0, md: 10 }}
+      >
+        <Text
+          color={colorMode === 'dark' ? 'gray.400' : 'gray.600'}
+          w='auto'
+          minW={250}
         >
-          <Text color={colorMode === 'dark' ? 'gray.400' : 'gray.600'} w={320}>
-            Get in Touch! Complete the contact form or check Socials.
-          </Text>
-          <Flex direction='column' alignItems='center' pt={6}>
-            {contact?.slice(0, 3)?.map(({ name, value, Component }) => (
-              <Tooltip
-                key={name}
-                label={
+          Get in Touch! Complete the contact form or check Socials.
+        </Text>
+        <Flex direction='column' alignItems='center' pt={6}>
+          {contact?.slice(0, 3)?.map(({ name, value, Component }) => (
+            <Tooltip
+              key={name}
+              label={
+                name === 'email'
+                  ? hasCopiedEmail
+                    ? 'Email Copied!'
+                    : 'Copy Email'
+                  : name === 'location'
+                  ? hasCopiedLocation
+                    ? 'Location Copied!'
+                    : 'Copy Location'
+                  : hasCopiedPhone
+                  ? 'Phone Copied!'
+                  : 'Copy Phone'
+              }
+              closeOnClick={false}
+              hasArrow
+            >
+              <Button
+                variant='ghost'
+                my={2}
+                onClick={
                   name === 'email'
-                    ? hasCopiedEmail
-                      ? 'Email Copied!'
-                      : 'Copy Email'
-                    : name === 'location'
-                    ? hasCopiedLocation
-                      ? 'Location Copied!'
-                      : 'Copy Location'
-                    : hasCopiedPhone
-                    ? 'Phone Copied!'
-                    : 'Copy Phone'
+                    ? onCopyEmail
+                    : name === 'phone'
+                    ? onCopyPhone
+                    : onCopyLocation
                 }
-                closeOnClick={false}
-                hasArrow
+                px={0.5}
+                _hover={{ border: '2px solid #C62E46' }}
+                _active={{ color: 'primary' }}
               >
-                <Button
-                  variant='ghost'
-                  my={2}
-                  onClick={
-                    name === 'email'
-                      ? onCopyEmail
-                      : name === 'phone'
-                      ? onCopyPhone
-                      : onCopyLocation
-                  }
-                  _hover={{ border: '2px solid #C62E46' }}
-                  _active={{ color: 'primary' }}
-                >
-                  <Box fontSize={26} pr={2}>
-                    {Component}
-                  </Box>
-                  <Text>{value}</Text>
-                </Button>
-              </Tooltip>
-            ))}
-          </Flex>
-          <Flex mt={{ lg: 10, md: 10 }} alignItems='center' justify='center'>
-            {socials?.map(({ Component, name, url, copy }) => (
-              <>
-                {copy ? (
-                  <p key={name}></p>
-                ) : (
-                  <Link href={url!} passHref>
-                    <IconButton
-                      aria-label={name}
-                      variant='ghost'
-                      size='lg'
-                      isRound={true}
-                      fontSize={30}
-                      mx={5}
-                      _hover={{ bg: 'secondary', color: 'white' }}
-                      _active={{ bg: 'primary', color: 'white' }}
-                      key={name}
-                      as={'a'}
-                      rel='noopener noreferrer'
-                      target='_blank'
-                      href={url!}
-                      icon={Component}
-                    />
-                  </Link>
-                )}
-              </>
-            ))}
-          </Flex>
-        </Stack>
+                <Box fontSize={26} pr={2}>
+                  {Component}
+                </Box>
+                <Text fontSize={{ base: 14, sm: 16 }}>{value}</Text>
+              </Button>
+            </Tooltip>
+          ))}
+        </Flex>
+        <Flex mt={{ lg: 10, md: 10 }} alignItems='center' justify='center'>
+          {socials?.map(({ Component, name, url, copy }) => (
+            <>
+              {copy ? (
+                <p key={name}></p>
+              ) : (
+                <Link href={url!} passHref>
+                  <IconButton
+                    aria-label={name}
+                    variant='ghost'
+                    size='lg'
+                    isRound={true}
+                    fontSize={30}
+                    mx={5}
+                    _hover={{ bg: 'secondary', color: 'white' }}
+                    _active={{ bg: 'primary', color: 'white' }}
+                    as={'a'}
+                    rel='noopener noreferrer'
+                    target='_blank'
+                    href={url!}
+                    icon={Component}
+                  />
+                </Link>
+              )}
+            </>
+          ))}
+        </Flex>
       </Stack>
-    </Container>
+    </Stack>
   );
 };

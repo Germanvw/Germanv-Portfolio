@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const Hero = () => {
   return (
-    <Stack minHeight='100vh' width='100%'>
+    <Stack minHeight='60vh'>
       <motion.div
         initial={{ x: -150 }}
         animate={{ x: 0 }}
@@ -21,7 +21,9 @@ export const Hero = () => {
           visible: { scale: 1, opacity: 1, transition: { delay: 0.4 } },
         }}
       >
-        <Heading fontSize='4.5rem'>German Vazquez</Heading>
+        <Heading fontSize='4.1rem' as='h2'>
+          German Vazquez
+        </Heading>
       </motion.div>
 
       <motion.div
@@ -32,7 +34,7 @@ export const Hero = () => {
           visible: { scale: 1, opacity: 1, transition: { delay: 0.8 } },
         }}
       >
-        <Heading fontSize='4.5rem' color='secondary'>
+        <Heading fontSize='3.4rem' as='h2' color='secondary'>
           Fullstack Developer
         </Heading>
       </motion.div>

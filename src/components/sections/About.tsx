@@ -31,7 +31,7 @@ export const About = () => {
 
   return (
     <Stack
-      width='100%'
+      width='auto'
       mb={20}
       as={motion.div}
       initial='hidden'
@@ -106,13 +106,17 @@ export const About = () => {
             </Stack>
           </Box>
         </Stack>
-        <Img
-          src='/images/portrait.jpg'
-          borderRadius='full'
-          borderWidth='1px'
+        <Box
+          width='auto'
           maxWidth={{ base: 240, lg: 384 }}
           maxHeight={{ base: 240, lg: 384 }}
-        />
+        >
+          <Img
+            src='/images/portrait.jpg'
+            borderRadius='full'
+            borderWidth='1px'
+          />
+        </Box>
       </Stack>
     </Stack>
   );

@@ -40,7 +40,7 @@ export const ProjectItem = ({ project }: { project: Props }) => {
             borderWidth='1px'
             borderRadius={8}
             minH={380}
-            minW={380}
+            minW={200}
             maxW={475}
             src={img}
             alt={name}

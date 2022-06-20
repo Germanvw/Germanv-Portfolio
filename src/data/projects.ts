@@ -42,7 +42,7 @@ export const projects = [
     featured: true,
     name: 'Personal Portfolio',
     description: [
-      'This project was created to test my skills with Chakra-UI and Animations.',
+      'Created to showcase my work and to test my skills with Chakra-UI and Animations.',
     ],
     img: '/images/ecommerce1.jpg',
     technologies: ['Chakra-Ui', 'Typescript', 'NextJs', 'Framer Motion'],

@@ -57,11 +57,16 @@ export const Journey = () => {
                 marginRight='30px'
                 margin='16px 0'
                 lineHeight='1.6'
+                width='auto'
                 marginLeft='60px'
-                width={{ base: '360px', lg: '360px' }}
+                maxWidth={{
+                  base: '100%',
+                  sm: '100%',
+                  md: '560px',
+                  lg: '360px',
+                }}
                 borderRadius={10}
                 padding='10px 20px'
-                borderRightColor={colorMode === 'dark' ? 'red' : 'red'}
                 bg={colorMode === 'dark' ? 'svgDark' : 'svgLight'}
                 position='relative'
               >
