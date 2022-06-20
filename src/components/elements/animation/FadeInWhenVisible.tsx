@@ -2,7 +2,13 @@ import { motion, useAnimation } from 'framer-motion';
 import { ReactNode, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-export const FadeInWhenVisible = ({ children }: { children: ReactNode }) => {
+export const FadeInWhenVisible = ({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
   useEffect(() => {
@@ -21,6 +27,7 @@ export const FadeInWhenVisible = ({ children }: { children: ReactNode }) => {
         visible: { opacity: 1, scale: 1 },
         hidden: { opacity: 0, scale: 0 },
       }}
+      className={className}
     >
       {children}
     </motion.div>

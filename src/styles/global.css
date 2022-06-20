@@ -35,10 +35,10 @@ html {
   }
 }
 
-.cd-timeline-block:first-child {
+div .cd-timeline-block:first-child {
   margin-top: 0;
 }
-.cd-timeline-block:last-child {
+div .cd-timeline-block:last-child {
   margin-bottom: 0;
 }
 @media only screen and (min-width: 992px) {

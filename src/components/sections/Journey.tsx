@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { BsFillCalendarFill } from 'react-icons/bs';
 import { journey } from '../../data/journey';
+import { FadeInWhenVisible } from '../elements/animation/FadeInWhenVisible';
 import { ContentSkill } from '../elements/ContentSkill';
 
 export const Journey = () => {
@@ -30,71 +31,76 @@ export const Journey = () => {
       >
         {journey?.map(
           ({ title, date, label, icon, description, technologies }, i) => (
-            <Box
-              className='cd-timeline-block'
-              key={i}
-              position='relative'
-              margin={{ base: '48px 0 48px 0', lg: '32px 0 32px 0' }}
-            >
-              <Flex
-                alignItems='center'
-                justifyContent='center'
-                className='cd-timeline-img'
-                fontSize={20}
-                border={`2px solid ${
-                  colorMode === 'dark' ? '#C62E46' : '#C62E46'
-                }`}
-                borderRadius={50}
-                height={{ base: '30px', lg: '40px' }}
-                width={{ base: '30px', lg: '40px' }}
-                color={colorMode === 'dark' ? '#C62E46' : '#F1F5F7'}
-                bg={colorMode === 'dark' ? '#1c1c1c' : '#C62E46'}
-              >
-                {icon}
-              </Flex>
+            <FadeInWhenVisible key={i} className='cd-timeline-block'>
               <Box
-                className='cd-timeline-content'
-                marginRight='30px'
-                margin='16px 0'
-                lineHeight='1.6'
-                width='auto'
-                marginLeft='60px'
-                maxWidth={{
-                  base: '100%',
-                  sm: '100%',
-                  md: '560px',
-                  lg: '360px',
-                }}
-                borderRadius={10}
-                padding='10px 20px'
-                bg={colorMode === 'dark' ? 'svgDark' : 'svgLight'}
+                className='cd-timeline-block'
                 position='relative'
+                margin={{ base: '48px 0 48px 0', lg: '32px 0 32px 0' }}
               >
-                <Heading fontSize={30} as='h4'>
-                  {title}
-                </Heading>
-                <Stack
-                  timeline-content-info
-                  direction={{ base: 'column', lg: 'row' }}
+                <Flex
                   alignItems='center'
-                  fontSize={{ base: '16px', lg: '12px' }}
-                  my={4}
+                  justifyContent='center'
+                  className='cd-timeline-img'
+                  fontSize={20}
+                  border={`2px solid ${
+                    colorMode === 'dark' ? '#C62E46' : '#C62E46'
+                  }`}
+                  borderRadius={50}
+                  height={{ base: '30px', lg: '40px' }}
+                  width={{ base: '30px', lg: '40px' }}
+                  color={colorMode === 'dark' ? '#C62E46' : '#F1F5F7'}
+                  bg={colorMode === 'dark' ? '#1c1c1c' : '#C62E46'}
                 >
-                  <Text color='primary'>{label}</Text>
-                  <Spacer></Spacer>
-                  <Stack direction='row' alignItems='center' color='secondary'>
-                    <Box fontSize='14px' marginBottom='3px'>
-                      <BsFillCalendarFill />
-                    </Box>
-                    <Text p={0}>{date}</Text>
+                  {icon}
+                </Flex>
+                <Box
+                  className='cd-timeline-content'
+                  marginRight='30px'
+                  margin='16px 0'
+                  lineHeight='1.6'
+                  width='auto'
+                  marginLeft='60px'
+                  maxWidth={{
+                    base: '100%',
+                    sm: '100%',
+                    md: '560px',
+                    lg: '360px',
+                  }}
+                  borderRadius={10}
+                  padding='10px 20px'
+                  bg={colorMode === 'dark' ? 'svgDark' : 'svgLight'}
+                  position='relative'
+                >
+                  <Heading fontSize={30} as='h4'>
+                    {title}
+                  </Heading>
+                  <Stack
+                    timeline-content-info
+                    direction={{ base: 'column', lg: 'row' }}
+                    alignItems='center'
+                    fontSize={{ base: '16px', lg: '12px' }}
+                    my={4}
+                  >
+                    <Text color='primary'>{label}</Text>
+                    <Spacer></Spacer>
+                    <Stack
+                      direction='row'
+                      alignItems='center'
+                      color='secondary'
+                    >
+                      <Box fontSize='14px' marginBottom='3px'>
+                        <BsFillCalendarFill />
+                      </Box>
+                      <Text p={0}>{date}</Text>
+                    </Stack>
                   </Stack>
-                </Stack>
-                <Text>{description}</Text>
-                <Box py={2}>
-                  <ContentSkill skills={technologies} />
+                  <Text>{description}</Text>
+                  <Box py={2}>
+                    <ContentSkill skills={technologies} />
+                  </Box>
                 </Box>
               </Box>
-            </Box>
+            </FadeInWhenVisible>
           )
         )}
       </Stack>

@@ -1,14 +1,16 @@
 import {
   Box,
   Button,
-  Container,
+  Center,
   Flex,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   IconButton,
   Input,
   InputGroup,
   InputLeftElement,
+  Spinner,
   Stack,
   Text,
   Textarea,
@@ -22,7 +24,9 @@ import { useColorMode } from '@chakra-ui/react';
 import { contact } from '../../data/contact-data';
 import { socials } from '../../data/socials';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { AlertItem } from './AlertItem';
+import emailjs from '@emailjs/browser';
 
 const initForm = {
   email: '',
@@ -33,8 +37,12 @@ const initForm = {
 export const ContactForm = () => {
   const { colorMode } = useColorMode();
 
+  const formRef = useRef(null) as React.RefObject<HTMLFormElement>;
+
   const [form, setForm] = useState(initForm);
   const [errors, setErrors] = useState(initForm);
+  const [showAlert, setShowAlert] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { hasCopied: hasCopiedEmail, onCopy: onCopyEmail } = useClipboard(
     'germanvazquezw99@gmail.com'
@@ -69,23 +77,48 @@ export const ContactForm = () => {
           newErrors.message = 'Must be at least 4 characters';
     });
     setErrors({ ...errors, ...newErrors });
+    return { ...errors, ...newErrors };
   };
-
+  console.log(
+    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE,
+    process.env.NEXT_PUBLIC_EMAILJS_SERVICE,
+    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE
+  );
   const handleInputs = ({ target }: any) => {
     setForm({ ...form, [target.name]: target.value });
     setErrors({ ...errors, [target.name]: '' });
   };
 
   const handleSubmit = () => {
-    handleValidation(form);
+    const errors = handleValidation(form);
     if (Object.values(errors).every((v) => v === '')) {
-      console.log('submit');
-      setForm(initForm);
-    } else {
-      console.log('error');
+      setLoading(true);
+      sendEmail();
     }
   };
 
+  const sendEmail = () => {
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE!,
+        formRef.current!,
+        process.env.NEXT_PUBLIC_EMAILJS_USERID!
+      )
+      .then(() => {
+        setLoading(false);
+        setShowAlert(true);
+        setForm(initForm);
+      });
+  };
+
+  useEffect(() => {
+    if (showAlert) {
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 5000);
+    }
+  }, [showAlert]);
   return (
     <Stack direction={{ base: 'column', lg: 'row' }}>
       <Box
@@ -97,78 +130,92 @@ export const ContactForm = () => {
         shadow='base'
       >
         <VStack spacing={5} width='auto'>
-          <FormControl isRequired>
-            <Stack direction='row'>
+          <form ref={formRef} onSubmit={handleSubmit}>
+            <FormControl isRequired isInvalid={errors?.email !== ''}>
               <FormLabel>Email</FormLabel>
-              <Text color='red.400'>{errors?.email}</Text>
-            </Stack>
-            <InputGroup>
-              <InputLeftElement>
-                <MdOutlineEmail />
-              </InputLeftElement>
-              <Input
-                bg={colorMode === 'dark' ? 'svgDark' : 'white'}
-                type='email'
-                width='100%'
-                errorBorderColor='red.400'
-                placeholder='Your Email'
-                name='email'
-                isInvalid={errors?.email !== ''}
-                value={form.email}
-                onChange={(e) => handleInputs(e)}
-              />
-            </InputGroup>
-          </FormControl>
-          <FormControl isRequired>
-            <Stack direction='row'>
+              <InputGroup>
+                <InputLeftElement>
+                  <MdOutlineEmail />
+                </InputLeftElement>
+                <Input
+                  bg={colorMode === 'dark' ? 'svgDark' : 'white'}
+                  type='email'
+                  width='100%'
+                  errorBorderColor='red.400'
+                  placeholder='Your Email'
+                  name='email'
+                  isInvalid={errors?.email !== ''}
+                  value={form.email}
+                  onChange={(e) => handleInputs(e)}
+                />
+              </InputGroup>
+              {errors?.email ? (
+                <FormErrorMessage mb={2}>{errors?.email}</FormErrorMessage>
+              ) : (
+                <Box height='32px'></Box>
+              )}
+            </FormControl>
+            <FormControl isRequired isInvalid={errors?.title !== ''}>
               <FormLabel>Title</FormLabel>
-              <Text color='red.400'>{errors?.title}</Text>
-            </Stack>
-            <InputGroup>
-              <InputLeftElement>
-                <MdTitle />
-              </InputLeftElement>
-              <Input
-                bg={colorMode === 'dark' ? 'svgDark' : 'white'}
-                type='text'
-                width='100%'
-                errorBorderColor='red.400'
-                placeholder='Title'
-                name='title'
-                isInvalid={errors?.title !== ''}
-                value={form.title}
-                onChange={(e) => handleInputs(e)}
-              />
-            </InputGroup>
-          </FormControl>
-          <FormControl isRequired>
-            <Stack direction='row'>
+              <InputGroup>
+                <InputLeftElement>
+                  <MdTitle />
+                </InputLeftElement>
+                <Input
+                  bg={colorMode === 'dark' ? 'svgDark' : 'white'}
+                  type='text'
+                  width='100%'
+                  errorBorderColor='red.400'
+                  placeholder='Title'
+                  name='title'
+                  isInvalid={errors?.title !== ''}
+                  value={form.title}
+                  onChange={(e) => handleInputs(e)}
+                />
+              </InputGroup>
+              {errors?.title ? (
+                <FormErrorMessage mb={2}>{errors?.title}</FormErrorMessage>
+              ) : (
+                <Box height='32px'></Box>
+              )}
+            </FormControl>
+            <FormControl isRequired isInvalid={errors?.message !== ''}>
               <FormLabel>Message</FormLabel>
-              <Text color='red.400'>{errors?.message}</Text>
+              <Textarea
+                isInvalid={errors?.message !== ''}
+                errorBorderColor='red.400'
+                placeholder='Your Message'
+                width='100%'
+                name='message'
+                bg={colorMode === 'dark' ? 'svgDark' : 'white'}
+                value={form.message}
+                onChange={(e) => handleInputs(e)}
+                resize='none'
+                rows={6}
+              />
+              {errors?.message ? (
+                <FormErrorMessage mb={2}>{errors?.message}</FormErrorMessage>
+              ) : (
+                <Box height='32px'></Box>
+              )}
+            </FormControl>
+            <Stack direction='column'>
+              <Center mb={loading || showAlert ? '32px' : '0'}>
+                {loading && <Spinner color='primary' />}
+                {showAlert && <AlertItem type='success' text='Email Sended' />}
+              </Center>
+              <Button
+                variant='outline'
+                bg='primary'
+                color='white'
+                _hover={{ bg: 'secondary' }}
+                _active={{ bg: 'primary' }}
+                onClick={handleSubmit}
+              >
+                Send Message
+              </Button>
             </Stack>
-            <Textarea
-              isInvalid={errors?.message !== ''}
-              errorBorderColor='red.400'
-              placeholder='Your Message'
-              width='100%'
-              name='message'
-              bg={colorMode === 'dark' ? 'svgDark' : 'white'}
-              value={form.message}
-              onChange={(e) => handleInputs(e)}
-              resize='none'
-              rows={6}
-            />
-          </FormControl>
-          <Button
-            variant='outline'
-            bg='primary'
-            color='white'
-            _hover={{ bg: 'secondary' }}
-            _active={{ bg: 'primary' }}
-            onClick={handleSubmit}
-          >
-            Send Message
-          </Button>
+          </form>
         </VStack>
       </Box>
       <Stack
@@ -227,10 +274,8 @@ export const ContactForm = () => {
         </Flex>
         <Flex mt={{ lg: 10, md: 10 }} alignItems='center' justify='center'>
           {socials?.map(({ Component, name, url, copy }) => (
-            <>
-              {copy ? (
-                <p key={name}></p>
-              ) : (
+            <Box key={name}>
+              {!copy && (
                 <Link href={url!} passHref>
                   <IconButton
                     aria-label={name}
@@ -249,7 +294,7 @@ export const ContactForm = () => {
                   />
                 </Link>
               )}
-            </>
+            </Box>
           ))}
         </Flex>
       </Stack>
