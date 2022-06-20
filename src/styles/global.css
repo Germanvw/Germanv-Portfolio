@@ -121,7 +121,6 @@ div .cd-timeline-block:last-child {
     border-right-color: #333c42;
   }
   .cd-timeline-block:nth-child(odd) .cd-timeline-content {
-    margin-right: 60px;
     margin-left: 0;
   }
 }

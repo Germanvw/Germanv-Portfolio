@@ -2,6 +2,7 @@ import { Box, Container, Stack, Text } from '@chakra-ui/react';
 import { socials } from '../data/socials';
 import { SocialList } from './elements/SocialList';
 import { Logo } from './Logo';
+import { motion } from 'framer-motion';
 
 export const Footer = ({ colorMode }: { colorMode: string }) => {
   return (
@@ -25,7 +26,13 @@ export const Footer = ({ colorMode }: { colorMode: string }) => {
         bottom='10%'
         left='30px'
       >
-        <SocialList />
+        <motion.div
+          initial={{ y: '-100vw' }}
+          animate={{ y: 0 }}
+          transition={{ type: 'spring', duration: 2, stiffness: 80, delay: 1 }}
+        >
+          <SocialList />
+        </motion.div>
       </Stack>
       <Logo />
       <Text>
@@ -33,13 +40,7 @@ export const Footer = ({ colorMode }: { colorMode: string }) => {
       </Text>
       <Stack direction={'row'} spacing={6} fontSize={30}>
         <Box display={['flex', 'flex', 'none', 'none', 'none']}>
-          {socials?.map(({ Component, name, url }) => (
-            <Box _hover={{ color: 'primary' }} key={name}>
-              <a href={url!} rel='noopener noreferrer' target='_blank'>
-                {Component}
-              </a>
-            </Box>
-          ))}
+          <SocialList />
         </Box>
       </Stack>
     </Container>
