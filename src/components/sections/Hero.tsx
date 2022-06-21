@@ -44,8 +44,8 @@ export const Hero = () => {
         transition={{ delay: 1 }}
       >
         <Text maxWidth='24em' py='10' fontSize='1.3rem'>
-          I’m a 23yo programmer from Argentina obsessed by the world of web
-          development, solving problems and developing rich and interactive
+          I’m a 23 years old programmer from Argentina obsessed by the world of
+          web development, solving problems and developing rich and interactive
           applications.
         </Text>
       </motion.div>

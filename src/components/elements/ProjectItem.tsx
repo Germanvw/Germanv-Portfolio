@@ -1,8 +1,6 @@
 import {
-  Badge,
   Button,
   Center,
-  Flex,
   Heading,
   Image,
   Stack,
@@ -33,19 +31,18 @@ export const ProjectItem = ({ project }: { project: Props }) => {
         boxShadow={'2xl'}
         padding={4}
       >
-        <Flex flex={1}>
-          <Image
-            objectFit='cover'
-            boxSize='100%'
-            borderWidth='1px'
-            borderRadius={8}
-            minH={380}
-            minW={200}
-            maxW={475}
-            src={img}
-            alt={name}
-          />
-        </Flex>
+        <Image
+          objectFit='cover'
+          objectPosition='left'
+          boxSize='100%'
+          borderWidth='1px'
+          borderRadius={8}
+          minH={380}
+          minW={200}
+          maxW={475}
+          src={img}
+          alt={name}
+        />
         <Stack
           flex={1}
           flexDirection='column'
@@ -80,10 +77,17 @@ export const ProjectItem = ({ project }: { project: Props }) => {
             justifyContent={'space-between'}
             alignItems={'center'}
           >
-            <Button fontSize={'sm'} rounded={'full'} w='100%'>
-              <a href={demo} rel='noopener noreferrer' target='_blank'>
-                Live Demo
-              </a>
+            <Button
+              fontSize={'sm'}
+              rounded={'full'}
+              w='100%'
+              as='a'
+              href={demo}
+              cursor='pointer'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Live Demo
             </Button>
             <Button
               w='100%'
@@ -96,10 +100,13 @@ export const ProjectItem = ({ project }: { project: Props }) => {
                 bg: 'secondary',
               }}
               _active={{ bg: 'primary' }}
+              as='a'
+              href={github}
+              cursor='pointer'
+              target='_blank'
+              rel='noopener noreferrer'
             >
-              <a href={github} rel='noopener noreferrer' target='_blank'>
-                Repository
-              </a>
+              Repository
             </Button>
           </Stack>
         </Stack>

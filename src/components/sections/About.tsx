@@ -36,9 +36,9 @@ export const About = () => {
       as={motion.div}
       initial='hidden'
       animate={control}
-      ref={ref}
       className='box'
       variants={variant}
+      ref={ref}
     >
       <Stack direction='row' alignItems='center' mb={10}>
         <Heading minW={200} as='kbd' id='About'>
@@ -50,9 +50,9 @@ export const About = () => {
         <Stack direction='column'>
           <Box>
             <Text fontSize='1.1rem' fontWeight='400' lineHeight='200%'>
-              Hi! My name is German and im a 23yo FullStack Developer who is
-              passionate about learning the latest technologies and pushing my
-              skills every day.
+              Hi! My name is German and Im a 23 years old FullStack Developer
+              who is passionate about learning the latest technologies and
+              pushing my skills every day.
             </Text>
             <Text fontSize='1.1rem' fontWeight='400' lineHeight='200%'>
               My first contact with programming was a subject called
@@ -62,12 +62,12 @@ export const About = () => {
             <Text fontSize='1.1rem' fontWeight='400' lineHeight='200%'>
               Since then i become in love with coding, changed careers and
               graduated from the UTN as a Technician in Programming/Computer
-              Systems in Dec 2021. At the beggining of that year i also began a
+              Systems in Dec 2021. At the beginning of that year i also began a
               self-learning journey to become a fullstack developer while
               finishing the university.
             </Text>
             <Text fontSize='1.1rem' fontWeight='400' lineHeight='200%'>
-              Right now im working as a React Developer at Cedeira Software
+              Right now Im working as a React Developer at Cedeira Software
               Factory.
             </Text>
           </Box>

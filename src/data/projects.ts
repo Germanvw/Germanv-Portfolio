@@ -7,14 +7,14 @@ export const projects = [
     ],
     img: '/images/portfolio_app.png',
     technologies: ['Chakra-Ui', 'Typescript', 'NextJs', 'Framer Motion'],
-    demo: 'https://ecommercemern-gw.herokuapp.com/',
-    github: 'https://github.com/Germanvw/portfolio',
+    demo: 'https://germanv-portfolio.vercel.app/',
+    github: 'https://github.com/Germanvw/Germanv-Portfolio',
   },
   {
     featured: true,
     name: 'Ecommerce Website',
     description: [
-      'This is the first real proyect i made by myself after finishing some react courses. Its a Full Stack MERN ecommerce that took me a little more that 2 weeks to finish.',
+      'This is the first real proyect i made by myself after finishing some react courses. Its a Full Stack MERN ecommerce that took me a little more than 2 weeks to finish.',
       'The idea behind it was to improve my skills with redux and typescript (wich i hadnt used before).',
     ],
     img: '/images/ecommerce1_app.jpg',
