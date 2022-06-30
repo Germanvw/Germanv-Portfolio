@@ -77,6 +77,7 @@ export const ContactForm = () => {
           newErrors.message = 'Must be at least 4 characters';
     });
     setErrors({ ...errors, ...newErrors });
+
     return { ...errors, ...newErrors };
   };
   console.log(
