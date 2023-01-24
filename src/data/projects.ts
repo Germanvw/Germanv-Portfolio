@@ -1,4 +1,15 @@
 export const projects = [
+  // {
+  //   featured: true,
+  //   name: 'Pet It',
+  //   description: [
+  //     "Freelance application that I'm currently working as a react native developer",
+  //   ],
+  //   img: '/images/portfolio_app.png',
+  //   technologies: ['React Native', 'Typescript', 'Expo'],
+  //   demo: 'https://germanv-portfolio.vercel.app/',
+  //   github: 'https://github.com/Germanvw/Germanv-Portfolio',
+  // },
   {
     featured: true,
     name: 'Personal Portfolio',
@@ -29,26 +40,6 @@ export const projects = [
     demo: 'https://ecommercemern-gw.herokuapp.com/',
     github: 'https://github.com/Germanvw/ecommerce-MERN',
   },
-  // {
-  //   featured: true,
-  //   name: 'SocialMedia Website',
-  //   description: [
-  //     'SocialMedia application where users can create posts, like, comment them and add friends!.',
-  //     'It was a good way of testing my skills with SQL querys and test ReduxToolkit.',
-  //   ],
-  //   img: '/images/ecommerce1.jpg',
-  //   technologies: [
-  //     'CSS',
-  //     'Formik',
-  //     'Typescript',
-  //     'React',
-  //     'ReduxToolkit',
-  //     'NodeJS',
-  //     'SQL',
-  //   ],
-  //   demo: 'https://ecommercemern-gw.herokuapp.com/',
-  //   github: 'https://github.com/Germanvw/socialmedia',
-  // },
   {
     featured: true,
     name: 'Calendar Application',
