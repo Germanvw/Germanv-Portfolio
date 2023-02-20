@@ -4,16 +4,18 @@ import { RiReactjsLine } from 'react-icons/ri';
 
 export const journey = [
   {
-    title: 'Frontend Developer',
-    label: 'Developer at Cedeira',
+    title: 'Fullstack Developer',
+    label: 'Fullstack Javascript Dev at Cedeira',
     date: 'May 2022 - Present',
     description:
-      'Frontend Developer at Cedeira working in a team of 3 people. I am responsible for the development of the frontend of the website and working with easy tasks at the Backend.',
+      'Fullstack React, Nodejs & .NET Core 6 Developer at Cedeira working on several projects of the company and Banco Galicia. I am responsible for the development of the frontend of the website and maintenence of Backend.',
     technologies: [
       'SCSS',
       'Bootstrap',
+      'MUI 5',
       'React',
-      'Redux',
+      'Nodejs',
+      'Redux Tookit',
       '.NET Core 6',
       'SQL Server',
     ],
