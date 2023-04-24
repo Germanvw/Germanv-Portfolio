@@ -15,6 +15,7 @@ import { skills } from '../../data/skills';
 import { BtnCV } from '../elements/BtnCV';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
+import { aboutText } from '../../data/about.text';
 
 const variant = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
@@ -49,27 +50,11 @@ export const About = () => {
       <Stack direction={{ base: 'column', lg: 'row' }} alignItems='center'>
         <Stack direction='column'>
           <Box>
-            <Text fontSize='1.1rem' fontWeight='400' lineHeight='200%'>
-              Hi! My name is German and Im a 23 years old FullStack Developer
-              who is passionate about learning the latest technologies and
-              pushing my skills every day.
+            {aboutText.map((text, index) => (
+            <Text key={index} fontSize='1.1rem' fontWeight='400' lineHeight='200%'>
+             {text}
             </Text>
-            <Text fontSize='1.1rem' fontWeight='400' lineHeight='200%'>
-              My first contact with programming was a subject called
-              Introduction to Programming that i took while going the university
-              to become a Civil Engineer in 2019.
-            </Text>
-            <Text fontSize='1.1rem' fontWeight='400' lineHeight='200%'>
-              Since then i become in love with coding, changed careers and
-              graduated from the UTN as a Technician in Programming/Computer
-              Systems in Dec 2021. At the beginning of that year i also began a
-              self-learning journey to become a fullstack developer while
-              finishing the university.
-            </Text>
-            <Text fontSize='1.1rem' fontWeight='400' lineHeight='200%'>
-              Right now Im working as a React Developer at Cedeira Software
-              Factory.
-            </Text>
+            ))}
           </Box>
           <Box py={6}>
             <Text fontSize='1.15rem' fontWeight='400' lineHeight='200%'>
@@ -78,7 +63,7 @@ export const About = () => {
           </Box>
           <Box>
             <Stack direction={{ base: 'column', sm: 'row' }}>
-              {skills?.map((col, i) => (
+              {skills.map((col, i) => (
                 <Stack key={i} w='100%'>
                   <List spacing={3}>
                     {col?.map((skill) => (

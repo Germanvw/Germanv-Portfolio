@@ -12,7 +12,6 @@ export const FadeInWhenVisible = ({
   const controls = useAnimation();
   const [ref, inView] = useInView();
   useEffect(() => {
-    console.log(inView);
     if (inView) {
       controls.start('visible');
     }

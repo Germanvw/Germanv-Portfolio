@@ -80,11 +80,7 @@ export const ContactForm = () => {
 
     return { ...errors, ...newErrors };
   };
-  console.log(
-    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE,
-    process.env.NEXT_PUBLIC_EMAILJS_SERVICE,
-    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE
-  );
+
   const handleInputs = ({ target }: any) => {
     setForm({ ...form, [target.name]: target.value });
     setErrors({ ...errors, [target.name]: '' });

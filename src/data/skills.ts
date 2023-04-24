@@ -1,4 +1,4 @@
 export const skills = [
   ['JavaScript (ES6+)', 'TypeScript', 'React', 'React Native', 'NodeJs'],
-  ['SqlServer & MongoDB', '.Net Core 6', 'Bootstrap, ChakraUi & Scss'],
+  ['SqlServer, MongoDB & Firebase', '.Net Core 6 & Nodejs', 'Entity Framework & Sequelize', 'Bootstrap, ChakraUi, MUI5, Mantine & Scss'],
 ];

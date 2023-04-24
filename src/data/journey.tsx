@@ -5,14 +5,14 @@ import { RiReactjsLine } from 'react-icons/ri';
 export const journey = [
   {
     title: 'Fullstack Developer',
-    label: 'Fullstack Javascript Dev at Cedeira',
+    label: 'Fullstack Javascript Dev at Cedeira & Banco Galicia',
     date: 'May 2022 - Present',
     description:
-      'Fullstack React, Nodejs & .NET Core 6 Developer at Cedeira working on several projects of the company and Banco Galicia. I am responsible for the development of the frontend of the website and maintenence of Backend.',
+      'Fullstack React, Nodejs & .NET Core 6 Developer at Cedeira working on several projects of the company and Banco Galicia. I am responsible for the development and leadership of the frontend of 2 projects in a team of 6 developers.',
     technologies: [
+      'Mantine',
+      'MUI5',
       'SCSS',
-      'Bootstrap',
-      'MUI 5',
       'React',
       'Nodejs',
       'Redux Tookit',
